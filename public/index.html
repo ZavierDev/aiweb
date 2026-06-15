@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>AI Chat</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- AUTH SCREEN -->
+  <div id="auth" class="auth-screen">
+    <div class="auth-card">
+      <h1>AI Chat</h1>
+      <p class="muted">Masuk atau daftar untuk mulai mengobrol</p>
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="register">Register</button>
+      </div>
+      <form id="authForm" autocomplete="off">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required minlength="4" />
+        <button type="submit" id="authBtn">Login</button>
+        <div id="authError" class="error"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-head">
+        <button id="newChatBtn" class="new-chat">+ New Chat</button>
+        <button id="closeSidebar" class="icon-btn mobile-only" aria-label="Close">✕</button>
+      </div>
+      <div id="convList" class="conv-list"></div>
+      <div class="sidebar-foot">
+        <div id="userEmail" class="user-email"></div>
+        <button id="logoutBtn" class="logout">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="openSidebar" class="icon-btn mobile-only" aria-label="Menu">☰</button>
+        <div class="title" id="convTitle">New Chat</div>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="empty">
+          <h2>Mulai percakapan</h2>
+          <p>Tanyakan apa pun ke AI.</p>
+        </div>
+      </div>
+
+      <div id="typing" class="typing hidden">AI sedang mengetik…</div>
+
+      <form id="chatForm" class="composer">
+        <textarea id="input" rows="1" placeholder="Tulis pesan…" autocomplete="off"></textarea>
+        <button type="submit" id="sendBtn" aria-label="Send">➤</button>
+      </form>
+    </main>
+
+    <div id="backdrop" class="backdrop"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
